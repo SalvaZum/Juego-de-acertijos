@@ -1,13 +1,13 @@
 //CREAR TODOS LOS ARRAY
 const array =[
-    {id:"2", texto:"Owww, como me conoces akslj te amo loca. La proxima pista la tendras entre tus manos mañana, asi que por ahora descansa"},
-    {id:"3", texto:"Muy biennn! Encontraste la pista lakjs, sabes que es mas gracioso aun, que al siguiente lugar al que tenemos que ir es el que esta escrito en la pista akljs."},
-    {id:"4", texto:"Que buen artista que es Camilo lpm, ahora vamos a seguir con esto de lugares especiales. Tenemos que ir al lugar de la fortuna, donde conviven gatos y las personas ¿No lo sacas aun? aklsj ¿Donde festejamos el segundo mes?"},
-    {id:"5", texto:"Y bueno, no estabamos solos, pero la vimos juntos alksj. Ahora tenemos que ir al lugar que nos salvo, a donde mas veces fuimos juntos y termino uniendonos ¿No sabes cual es? Pensala bien, lo tenes en tu nombre. Especificamente a donde fuimos la primera vez"},
-    {id:"6", texto:"Bueno esa si fue la primera que vimos solos, alksj. Ahora vamos a ir a tu lugar favorito de comida rapida ¿Que te parece?"},
-    {id:"7", texto:"Owww, que lindo que sepas escribir mi apellido aklsj. ¿Te acordar que una vez fuimos a ver libros? Genial! Solo espero que te acuerdes el libro que subiste a tus estados"},
-    {id:"8", texto:"Ya vamos a ir algun dia, te lo prometo. Tenemos un solo problema ahora, necesitamos un aventon jeje, asi que yo que vos le pregunto a tu viejo si podemos ir a mi casa o mejor dicho a la plaza"},
-    {id:"9", texto:"ALKSJ q hdp. Finalmente ya estamos terminando, te lo prometo. Ahora necesito que cierres les ojos y confies"}
+    {id:"2",titulo:"BLOQUEADO", texto:"Owww, como me conoces akslj te amo loca. La proxima pista la tendras entre tus manos mañana, asi que por ahora descansa"},
+    {id:"3",titulo:"BLOQUEADISIMO", texto:"Muy biennn! Encontraste la pista lakjs, sabes que es mas gracioso aun, que al siguiente lugar al que tenemos que ir es el que esta escrito en la pista akljs."},
+    {id:"4",titulo:"MUY BLOQUEADO", texto:"Que buen artista que es Camilo lpm, ahora vamos a seguir con esto de lugares especiales. Tenemos que ir al lugar de la fortuna, donde conviven gatos y las personas ¿No lo sacas aun? aklsj ¿Donde festejamos el segundo mes?"},
+    {id:"5",titulo:"UN POCO BLOQUEADO", texto:"Y bueno, no estabamos solos, pero la vimos juntos alksj. Ahora tenemos que ir al lugar que nos salvo, a donde mas veces fuimos juntos y termino uniendonos ¿No sabes cual es? Pensala bien, lo tenes en tu nombre. Especificamente a donde fuimos la primera vez"},
+    {id:"6",titulo:"ME PARECE QUE ESTA BLOQUEADO", texto:"Bueno esa si fue la primera que vimos solos, alksj. Ahora vamos a ir a tu lugar favorito de comida rapida ¿Que te parece?"},
+    {id:"7",titulo:"TAMBIEN BLOQUEADO", texto:"Owww, que lindo que sepas escribir mi apellido aklsj. ¿Te acordar que una vez fuimos a ver libros? Genial! Solo espero que te acuerdes el libro que subiste a tus estados"},
+    {id:"8",titulo:"SI, ESTA BLOQUEADO", texto:"Ya vamos a ir algun dia, te lo prometo. Tenemos un solo problema ahora, necesitamos un aventon jeje, asi que yo que vos le pregunto a tu viejo si podemos ir a mi casa o mejor dicho a la plaza"},
+    {id:"9",titulo:"CAPAZ ESTA BLOQUEADO", texto:"ALKSJ q hdp. Finalmente ya estamos terminando, te lo prometo. Ahora necesito que cierres les ojos y confies"}
 ]
  
 //SISTEMA DE DESBLOQUEO
@@ -36,7 +36,6 @@ function desbloquearPuzzle(id){
 
     const hoy = new Date()
     const fechaDesbloqueo = new Date(2026, 6, 5)
-    console.log(fechaDesbloqueo)
 
     if (hoy >= fechaDesbloqueo) {
         desbloquearPuzzle("i")
@@ -103,7 +102,7 @@ array.forEach((e) => {
             <div class="slide puzzle bloqueado card-body" id="puzzle-${e.id}">
 
                 <div class="overlay fw-bold text-light">
-                🔒 BLOQUEADO 🔒
+                🔒 ${e.titulo} 🔒
                 </div>
 
                 <div class="contenido text-light my-auto">
