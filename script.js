@@ -9,7 +9,7 @@ const array =[
     {id:"8", texto:"Ya vamos a ir algun dia, te lo prometo. Tenemos un solo problema ahora, necesitamos un aventon jeje, asi que yo que vos le pregunto a tu viejo si podemos ir a mi casa o mejor dicho a la plaza"},
     {id:"9", texto:"ALKSJ q hdp. Finalmente ya estamos terminando, te lo prometo. Ahora necesito que cierres les ojos y confies"}
 ]
-
+ 
 //SISTEMA DE DESBLOQUEO
 function desbloquearPuzzle(id){
     //Desbloquea y enfoca puzzle
