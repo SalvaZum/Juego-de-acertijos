@@ -14,7 +14,9 @@ const array =[
 function desbloquearPuzzle(id){
     //Desbloquea y enfoca puzzle
     const puzzleActual = document.querySelector(".activo")
-    puzzleActual.classList.remove("activo")
+    if(id!=="i"){
+        puzzleActual.classList.remove("activo")
+    }
 
     const puzzle = document.getElementById("puzzle-"+id)
     puzzle.classList.add("desbloqueado")
