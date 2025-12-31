@@ -1,0 +1,128 @@
+:root{
+  --claro:rgb(64, 48, 151);
+  --medio:rgb(60, 27, 90);
+  --oscuro:rgb(40, 4, 48);
+}
+
+body{
+  background: linear-gradient(var(--claro), var(--medio));
+  min-height: 100vh;
+}
+
+.glass{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(3px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0 , 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 32px;
+}
+
+canvas{
+  position: fixed;
+  inset: 0;
+  z-index:-1;
+}
+
+/* ===== PUZZLES ===== */
+
+/* Tamaño fijo y responsive del slider */
+.slider{
+  width: 90%;
+  max-width: 900px;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cada slide ocupa todo el alto del slider */
+.slide{
+  width: 100%;
+  min-height: 260px;
+  display: none;
+}
+
+/* Slide visible */
+.slide.activo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centramos overlay SIEMPRE */
+.overlay{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+}
+
+/* Centramos el contenido también */
+.contenido{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 15px;
+}
+
+.slide.activo{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+}
+
+.puzzle{
+  position:relative;
+  min-height:250px;
+}
+
+.contenido{
+  opacity:0;
+  pointer-events:none;
+}
+
+.puzzle.desbloqueado .overlay{
+  display:none;
+}
+
+.puzzle.desbloqueado .contenido{
+  opacity:1;
+  pointer-events:auto;
+}
+
+/* ===== CANDADOS ===== */
+
+.logos{
+  padding:10px;
+  border-radius:10px;
+  display: inline-block;
+}
+
+.cerrado{
+  background:red;
+}
+
+.abierto{
+  background:green;
+}
+
+/* ===== BOTONES EXTRA ===== */
+
+.flecha{
+  border-radius:10px;
+}
+
+.oculto{
+  display:none;
+}
+
+.visible{
+  display:flex;
+}

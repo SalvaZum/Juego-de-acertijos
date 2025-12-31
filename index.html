@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego de puzzles</title>
+
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="text-white text-center d-flex flex-column justify-content-center align-items-center">
+
+  <canvas id="bg"></canvas>
+
+  <div class="container py-4" id="head">
+    <h1 id="title" class="fw-bold">For my amor</h1>
+    <h4 id="subtitle" class="fw-semibold">!FELIZ AÑO BUFONA!</h4>
+    <h6>Ti amo con tutto il mio cuore</h6>
+    <button class="btn btn-outline-primary border-2 mt-5"  onclick="
+              const body = document.getElementById('misterio')
+              body.classList.remove('oculto')
+              body.classList.add('visible')
+
+              const head = document.getElementById('head')
+              head.classList.add('oculto')
+          ">Comenzar Desafio</button>
+  </div>
+
+  <div id="misterio" class="oculto mt-3 flex-column justify-content-center align-items-center">
+    <!-- Entrada código -->
+    <div id="oculto" class="oculto container card glass p-3 mx-3 " style="max-width:350px;">
+        <label class="form-label text-light">Introduce código secreto</label>
+        <input id="desbloqueo" type="text"
+            class="form-control text-center mb-2">
+        <button onclick="Comprobar()" class="btn btn-outline-primary w-100">Enviar</button>
+        <p id="feedbackMsj" class="mt-2 fw-bold text-white p-2 rounded-pill"></p>
+    </div>
+
+    <!-- Carrusel manual -->
+    <section class="container d-flex justify-content-center align-items-center flex-column gap-2 my-4">
+        <div class="slider card p-3 glass" id="container-puzzles">
+            <div class="slide activo puzzle bloqueado card-body" id="puzzle-i">
+                <div class="overlay fw-bold text-light">
+                🔒 SE DESBLOQUEARÁ EL 05/07/2026 🔒
+                </div>
+
+                <div class="contenido text-light">
+                <h2>Hola amor!</h2>
+                <p>Tanto tiempo paso desde que escribi esto jeje (lit 6 meses).
+                    Para celebrar nuestro primer año pense en recrear la manera en la que te pedi ser novios, pero con un pequeño cambio.</p>
+
+                <p>Para comenzar con este puzzle, apreta el boton "Desbloquear"
+                    y piensa en mi artista favorito.</p>
+
+                <button class="btn btn-success"
+                    onclick="
+                    const div = document.getElementById('oculto')
+                    div.classList.remove('oculto')
+                    div.classList.add('visible')
+                ">
+                    DESBLOQUEAR
+                </button>
+                </div>
+            </div>
+        </div>
+        <div class="">
+            <button id="prev" class="btn btn-secondary fs-3">⬅</button>
+            <button id="next" class="btn btn-secondary fs-3">➡</button>
+        </div>
+    </section>
+
+    <!-- Candados -->
+    <section class="container-fluid d-flex justify-content-center px-4 mt-3">
+        <div class="row justify-content-center text-center" id="container-candados">
+        <div class="col-2"> <h3 id="candado-i" class="logos cerrado">🔒</h3> </div>
+        </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    
+//CARRUSEL DE IMAGENES
+const slides = document.querySelectorAll(".slide")
+const next = document.getElementById("next")
+const prev = document.getElementById("prev")
+
+let indice = 0
+
+function mostrarSlide(i) {
+    slides.forEach(slide => slide.classList.remove("activo"))
+    slides[i].classList.add("activo")
+}
+
+next.addEventListener("click", () => {
+    indice++
+    if (indice >= slides.length) indice = 0
+    mostrarSlide(indice)
+})
+
+prev.addEventListener("click", () => {
+    indice--
+    if (indice < 0) indice = slides.length - 1
+    mostrarSlide(indice)
+})
+
+//PARTICULAS DEL FONDO
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+const particles = [];
+
+for (let i = 0; i < 100; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.7,
+    vy: (Math.random() - 0.5) * 0.7,
+    size: Math.random() * 2 + 1
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(118, 104, 199, 1)";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+  </script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
